@@ -103,4 +103,8 @@ export class UserListService {
 
     constructor() {
     }
+
+    getList() {
+        return this.usersList;
+    }
 }

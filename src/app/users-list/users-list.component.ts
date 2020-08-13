@@ -11,7 +11,7 @@ export class UsersListComponent implements OnInit {
 
     constructor(userListService: UserListService) {
 
-        this.usersList = userListService.usersList;
+        this.usersList = userListService.getList();
 
     }
 
