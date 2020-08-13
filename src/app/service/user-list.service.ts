@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { User } from '../user';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserListService {
-    usersList = [
+    public usersList: User[] = [
         {
             "id": 1,
             "name": "Leanne Graham",
@@ -104,7 +105,16 @@ export class UserListService {
     constructor() {
     }
 
-    getList() {
+    getList(): User[] {
         return this.usersList;
+    }
+
+    findItem(query: string): User[] {
+        return this.usersList.filter(i => i.name.toLowerCase().includes(query.toLowerCase()));
+    }
+
+    sortItem(val: string): User[] {
+        const directions = !!parseInt(val, 10) ? -1 : 1;
+        return this.usersList.sort((a, b) => directions * (a.username > b.username ? 1 : -1));
     }
 }
